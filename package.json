@@ -1,0 +1,18 @@
+{
+  "name": "fcc-rand-quote",
+  "version": "1.0.0",
+  "description": "FreeCodeCamp Random Quote Machine",
+  "main": "./js/bundle.js",
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
+  "author": "Jason Boyll",
+  "license": "MIT",
+  "devDependencies": {
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^1.0.0",
+    "typescript": "^2.0.7",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}

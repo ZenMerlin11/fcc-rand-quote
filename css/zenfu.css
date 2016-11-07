@@ -1,5 +1,6 @@
 body {
-    margin-top: 40px;
+    width: 60%;
+    margin: 0 auto;    
     background-image: url('../img/background.jpg');
     font-family: sans-serif;
     color: #ffde00;    
@@ -16,12 +17,12 @@ body {
 header, footer {
     display: block;
     background-color: #1e1e1e;
-    margin: 5px;
+    margin: 40px auto 20px;
     padding: 5px;
     min-height: 80px;
     border: 3px solid green;
     border-radius: 15px;
-    box-shadow: 5px 5px black;
+    box-shadow: 2px 2px 5px black;
 }
 
 .text-center {
@@ -29,39 +30,21 @@ header, footer {
 }
 
 #quote-box {
+    display: block;
     background-color: #1e1e1e;
-    margin: 5px;
+    margin: 20px auto;
+    padding: 10px;
     border: 3px solid green;
     border-radius: 15px;
-    padding: 10px;
-    width: 500px;
-    max-width: 90%;
-    box-shadow: 5px 5px black;
+    box-shadow: 2px 2px 5px black;
 }
 
 #quote {
     text-align: center;
 }
 
-#name {
+#quote-name {
     text-align: right;
-}
-
-#form-box {
-    background-color: #1e1e1e;
-    margin: 5px;
-    border: 3px solid green;
-    border-radius: 15px;
-    padding: 10px;
-    text-align: left;
-    width: 500px;
-    max-width: 90%;
-    box-shadow: 5px 5px black;
-}
-
-#txt-num-quote {
-    width: 20%;
-    margin: 10px auto;
 }
 
 #btn-gen-quote {

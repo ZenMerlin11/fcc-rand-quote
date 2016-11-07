@@ -5,24 +5,28 @@
         <title>Random Quote Machine</title>
         <meta name="Description" content="fcc-rand-quote">
         <meta name="Author" content="Jason Boyll">
-        <link href="css/zenfu.css" rel="stylesheet">
+        <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     </head>
     <body>
         <!-- App content -->
         <div id="content">
-            <header>
-                <h1 class="text-center">Random Quote Machine</h1>
-            </header>            
-            <div id="quote-box">
-                <p id="quote">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-                <p id="quote-name">-Lorem Ipsum</p>
-                <form action="">
-                    <button id="btn-gen-quote" type="button">Generate Quote</button>
+            <div class="container">
+                <h1>Random Quote Machine</h1>
+            </div>
+                        
+            <div class="container">
+                <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                <p>-Lorem Ipsum</p>
+                <form>
+                    <button type="button">Generate Quote</button>
                 </form>
             </div>
         </div>
 
         <!-- Dependencies -->
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
 
         <!-- Main app -->
         <script src="js/bundle.js"></script>

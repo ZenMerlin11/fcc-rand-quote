@@ -11,19 +11,27 @@
         <!-- App content -->
         <div id="content">
             <header>
-                <h1 class="text-center">Random Quote Machine</h1>
+                <h1>Random Quote Machine</h1>
             </header>            
             <div id="quote-box">
                 <p id="quote">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-                <p id="quote-name">-Lorem Ipsum</p>
-                <form action="">
-                    <button id="btn-gen-quote" type="button">Generate Quote</button>
-                </form>
+                <p id="quote-name"><em><strong>-Lorem Ipsum</strong></em></p>
+                <div id="button-box">
+                    Generate Quote
+                </div>
+                <a href="https://twitter.com/share"
+                    class="twitter-share-button"
+                    data-show-count="false">
+                    Tweet
+                </a>
             </div>
         </div>
 
-        <!-- Dependencies -->
 
+
+        <!-- Dependencies -->
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
         <!-- Main app -->
         <script src="js/bundle.js"></script>
     </body>

@@ -46,7 +46,7 @@ header h1 {
     padding: 8px;    
     border-radius: 15px;
     text-align: center;
-    box-shadow: 4px 4px 5px black;
+    box-shadow: 2px 2px 4px black;
     user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;

@@ -27,17 +27,17 @@ var quoteData = [
         quote: "It does not matter how slowly you go as long as you do not stop.",
         author: "Confucius"
     }
-]
+];
 
-var prevQuoteIndex: number = -1;
+let prevQuoteIndex: number = -1;
 
-function getRandomIndex(min: number, max: number) {
+function getRandomIndex(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function updateQuote() {
+function updateQuote(): void {
     // Initialize local variables
     let index: number,
         quote: string,
@@ -46,7 +46,7 @@ function updateQuote() {
 
     // Get random index other than previous
     do {
-        index = getRandomIndex(0, quoteData.length);
+        index = getRandomIndex(0, quoteData.length - 1);
     } while (index === prevQuoteIndex);
     prevQuoteIndex = index;
 
@@ -56,7 +56,7 @@ function updateQuote() {
 
     // Render quote data to DOM
     elem = document.getElementById("quote");
-    elem.textContent = quote;￼
+    elem.textContent = quote;
     elem = document.getElementById("quote-author");
     elem.innerHTML = "<strong><em>-".concat(author).concat("</em></strong>");
 }

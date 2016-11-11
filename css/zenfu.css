@@ -32,14 +32,14 @@ header h1 {
 }
 
 #quote {
+    text-align: center;    
+}
+
+#quote-author {
     text-align: center;
 }
 
-#quote-name {
-    text-align: center;
-}
-
-#button-box {
+#button {
     width: 125px;
     background-color: green;
     margin: 10px auto;
@@ -54,13 +54,13 @@ header h1 {
     -o-user-select: none;
 }
 
-#button-box:hover {
+#button:hover {
     cursor: pointer;
     background-color: #ffde00;
     color: black;
 }
 
-#button-box:active {
+#button:active {
     cursor: pointer;
     background-color: #fff677;    
     box-shadow: 0px 0px 0px green;

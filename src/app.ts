@@ -30,6 +30,7 @@ let quoteData = [
 ];
 
 let prevQuoteIndex: number = -1;
+const twitterLink: string = "https://twitter.com/intent/tweet?hashtags=quotes&text=";
 
 function getRandomIndex(min: number, max: number): number {
     min = Math.ceil(min);
@@ -62,14 +63,7 @@ function updateQuote(): void {
 
     // Build Tweet link
     elem = document.getElementById('tweet-button');
-    elem.innerHTML = '';
-    twttr.widgets.createShareButton(
-        '/',
-        document.getElementById('tweet-button'),
-        {
-            text: `${ quote } -${ author }`
-        }
-    );
+    elem.setAttribute("href", `${ twitterLink }${ quote } -${ author }`);
 }
 
 document.getElementById('button').addEventListener('click', updateQuote, false);

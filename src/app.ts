@@ -1,4 +1,4 @@
-var quoteData = [
+let quoteData = [
     {
         quote: 'Before God we are all equally wise - and equally foolish.',
         author: 'Albert Einstein'

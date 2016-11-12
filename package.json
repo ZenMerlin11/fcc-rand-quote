@@ -4,7 +4,7 @@
   "description": "FreeCodeCamp Random Quote Machine",
   "main": "./js/bundle.js",
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --host 0.0.0.0"
   },
   "author": "Jason Boyll",
   "license": "MIT",

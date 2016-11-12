@@ -1,31 +1,31 @@
 var quoteData = [
     {
-        quote: "Before God we are all equally wise - and equally foolish.",
-        author: "Albert Einstein"
+        quote: 'Before God we are all equally wise - and equally foolish.',
+        author: 'Albert Einstein'
     },
     {
-        quote: "In order to succeed, we must first believe we can.",
-        author: "Nikos Kazantzakis"
+        quote: 'In order to succeed, we must first believe we can.',
+        author: 'Nikos Kazantzakis'
     },
     {
-        quote: "Good, better, best. Never let it rest. 'Til your good is better and your better is best.",
-        author: "St. Jerome"
+        quote: 'Good, better, best. Never let it rest. \'Til your good is better and your better is best.',
+        author: 'St. Jerome'
     },
     {
-        quote: "Problems are not stop signs, they are guidelines",
-        author: "Robert H. Schuller"
+        quote: 'Problems are not stop signs, they are guidelines',
+        author: 'Robert H. Schuller'
     },
     {
-        quote: "If you can dream it, you can do it.",
-        author: "Walt Disney"
+        quote: 'If you can dream it, you can do it.',
+        author: 'Walt Disney'
     },
     {
-        quote: "Always do your best. What you plant now, you will harvest later.",
-        author: "Og Mandino"
+        quote: 'Always do your best. What you plant now, you will harvest later.',
+        author: 'Og Mandino'
     },
     {
-        quote: "It does not matter how slowly you go as long as you do not stop.",
-        author: "Confucius"
+        quote: 'It does not matter how slowly you go as long as you do not stop.',
+        author: 'Confucius'
     }
 ];
 
@@ -55,11 +55,22 @@ function updateQuote(): void {
     author = quoteData[index].author;
 
     // Render quote data to DOM
-    elem = document.getElementById("quote");
+    elem = document.getElementById('quote');
     elem.textContent = quote;
-    elem = document.getElementById("quote-author");
-    elem.innerHTML = "<strong><em>-".concat(author).concat("</em></strong>");
+    elem = document.getElementById('quote-author');
+    elem.innerHTML = '<strong><em>-'.concat(author).concat('</em></strong>');
+
+    // Build Tweet link
+    elem = document.getElementById('tweet-button');
+    elem.innerHTML = '';
+    twttr.widgets.createShareButton(
+        '/',
+        document.getElementById('tweet-button'),
+        {
+            text: `${ quote } -${ author }`
+        }
+    );
 }
 
-document.getElementById("button").addEventListener("click", updateQuote, false);
+document.getElementById('button').addEventListener('click', updateQuote, false);
 window.onload = updateQuote;

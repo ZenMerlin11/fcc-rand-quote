@@ -14,4 +14,4 @@ web server by running:
 
     npm run dev
 
-and go to <https://localhost:8080>
+and go to <http://localhost:8080>

@@ -1,5 +1,5 @@
 const twitterLink: string = 'https://twitter.com/intent/tweet?hashtags=quotes&text=';
-const quoteURL: string = 'http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en';
+const quoteURL: string = 'https://crossorigin.me/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en';
 
 function getJSON(url: string, callback: Function): void {
     let xhr: XMLHttpRequest = new XMLHttpRequest();

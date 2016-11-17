@@ -5,23 +5,29 @@ function getJSON(url: string, callback: Function): void {
     let xhr: XMLHttpRequest = new XMLHttpRequest();
     xhr.open('get', url, true);
     xhr.responseType = 'json';
-    xhr.onload = function() {
-        let status: number = xhr.status;
-        if (status === 200) {
-            callback(null, xhr.response);
-        } else {
-            callback(status);
-        }
+    xhr.onreadystatechange = function () {
+        handleXhrResponse(xhr);
     };
     xhr.send();
 }
 
-function handleXhrResponse(error: number, data: string): void {
-    if (error != null) {
-        alert('Error: ' + error);
-    } else {
-        updateQuote(JSON.parse(data));
+function handleXhrResponse(xhr: XMLHttpRequest): void {
+    // 4 readState means the request is completed.
+    if (4 != xhr.readyState) {
+        // Do nothing if the request is not complete.
+        return;
     }
+
+    if (null == xhr.response) {
+        alert('Error: no response from server');
+    }
+
+    if (200 != xhr.status) {
+        alert(`Error: status ${xhr.status}`);
+    }
+
+    // Process the response if success.
+    updateQuote(xhr.response);   
 }
 
 function getQuote(): void {

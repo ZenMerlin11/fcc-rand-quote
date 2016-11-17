@@ -14,7 +14,7 @@ header, footer, #quote-box {
     padding: 5px;
     min-height: 80px;
     border-radius: 5px;
-    box-shadow: 10px 10px 20px black;
+    box-shadow: 10px 10px 40px black;
 }
 
 header h1 {

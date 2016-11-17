@@ -1,70 +1,69 @@
-let quoteData = [
-    {
-        quote: 'Before God we are all equally wise - and equally foolish.',
-        author: 'Albert Einstein'
-    },
-    {
-        quote: 'In order to succeed, we must first believe we can.',
-        author: 'Nikos Kazantzakis'
-    },
-    {
-        quote: 'Good, better, best. Never let it rest. \'Til your good is better and your better is best.',
-        author: 'St. Jerome'
-    },
-    {
-        quote: 'Problems are not stop signs, they are guidelines',
-        author: 'Robert H. Schuller'
-    },
-    {
-        quote: 'If you can dream it, you can do it.',
-        author: 'Walt Disney'
-    },
-    {
-        quote: 'Always do your best. What you plant now, you will harvest later.',
-        author: 'Og Mandino'
-    },
-    {
-        quote: 'It does not matter how slowly you go as long as you do not stop.',
-        author: 'Confucius'
-    }
-];
+const twitterLink: string = 'https://twitter.com/intent/tweet?hashtags=quotes&text=';
+const quoteURL: string = 'http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en';
 
-let prevQuoteIndex: number = -1;
-const twitterLink: string = "https://twitter.com/intent/tweet?hashtags=quotes&text=";
-
-function getRandomIndex(min: number, max: number): number {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function getJSON(url: string, callback: Function): void {
+    let xhr: XMLHttpRequest = new XMLHttpRequest();
+    xhr.open('get', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+        let status: number = xhr.status;
+        if (status === 200) {
+            callback(null, xhr.response);
+        } else {
+            callback(status);
+        }
+    };
+    xhr.send();
 }
 
-function updateQuote(): void {
+function handleXhrResponse(error: number, data: string): void {
+    if (error != null) {
+        alert('Error: ' + error);
+    } else {
+        updateQuote(JSON.parse(data));
+    }
+}
+
+function getQuote(): void {
+    getJSON(quoteURL, handleXhrResponse);
+}
+
+interface IQuoteData {
+    quoteText: string;
+    quoteAuthor: string;
+}
+
+function updateQuote(quoteData: IQuoteData): void {
     // Initialize local variables
-    let index: number,
-        quote: string,
-        author: string,
-        elem: Element
-
-    // Get random index other than previous
-    do {
-        index = getRandomIndex(0, quoteData.length - 1);
-    } while (index === prevQuoteIndex);
-    prevQuoteIndex = index;
-
+    let quote: string,
+        author: string;
+        
     // Get quote from quoteData
-    quote = quoteData[index].quote;
-    author = quoteData[index].author;
+    if (quoteData.hasOwnProperty('quoteText') &&
+        quoteData.hasOwnProperty('quoteAuthor')
+    ) {
+        quote = quoteData.quoteText;
+        author = quoteData.quoteAuthor;
+        renderQuoteToDOM(quote, author);
+        updateTweetLink(quote, author);
+    }    
+}
 
+function renderQuoteToDOM(quote: string, author: string): void {
     // Render quote data to DOM
+    let elem: Element;
     elem = document.getElementById('quote');
     elem.textContent = quote;
     elem = document.getElementById('quote-author');
     elem.innerHTML = '<strong><em>-'.concat(author).concat('</em></strong>');
+}
 
-    // Build Tweet link
+function updateTweetLink(quote: string, author: string): void {
+    // Build and update Tweet link
+    let elem: Element;
     elem = document.getElementById('tweet-button');
     elem.setAttribute("href", `${ twitterLink }${ quote } -${ author }`);
 }
 
-document.getElementById('button').addEventListener('click', updateQuote, false);
-window.onload = updateQuote;
+document.getElementById('button').addEventListener('click', getQuote, false);
+window.onload = getQuote;

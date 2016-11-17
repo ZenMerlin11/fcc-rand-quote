@@ -30,8 +30,26 @@
         </div>
 
         <!-- Dependencies -->
-
+        
         <!-- Main app -->
         <script src="js/bundle.js"></script>
+        <script type="text/javascript">
+            function updateQuote(response) {
+                var quote = response.quoteText;
+                var author = ' -'.concat(response.quoteAuthor); 
+                var twitterLink = 'https://twitter.com/intent/tweet?hashtags=quotes&text=';                
+                document.getElementById('quote').innerText = 
+                    response.quoteText;
+                document.getElementById('quote-author').innerText =
+                    response.quoteAuthor;                
+                document.getElementById('tweet-button')
+                    .setAttribute(
+                        "href", twitterLink.concat(quote)
+                        .concat(' -')
+                        .concat(author)
+                    );
+            }
+        </script>
+        <div id="jsonp"></div>
     </body>
 </html>

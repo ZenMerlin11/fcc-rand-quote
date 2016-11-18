@@ -71,11 +71,11 @@ header h1 {
     width: 34px;
     height: 34px;
     box-shadow: 2px 2px 6px black;
-    content: url('https://dl.dropboxusercontent.com/s/2xvkfolupvgcvi3/Twitter_Logo_White_On_Blue.png');
+    content: url('../img/Twitter_Logo_White_On_Blue.png');
 }
 
 #tweet-icon:hover {
-    content: url('https://dl.dropboxusercontent.com/s/fzp1p9xy2feuh2b/Twitter_Logo_Blue_On_White.png');
+    content: url('../img/Twitter_Logo_Blue_On_White.png');
 }
 
 #tweet-icon:active {

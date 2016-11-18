@@ -1,11 +1,14 @@
+// Interface for quote data object
 interface IQuoteData {
     content: string;
     title: string;
 }
 
+// Initialize app globals
 const twitterLink: string = 'https://twitter.com/intent/tweet?hashtags=quotes&text=';
 const quoteURL: string = 'data/quotes.json';
-let prevQuoteIndex: number = -1;
+const uniqueQuotes = 30; 
+let recentQuotes: Array<number> = [];
 let quoteData: Array<IQuoteData>; 
 
 function getJSON(url: string): void {
@@ -45,6 +48,31 @@ function getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function quoteRecentlyUsed(index: number) {
+    if (recentQuotes === undefined) {
+        return false;
+    }
+
+    for (let i = 0; i < recentQuotes.length; i++) {
+        if (index === recentQuotes[i]) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+function logRecentQuote(index: number) {
+    // Log the current index to recent quotes
+    recentQuotes.push(index);
+
+    // Once the desired number of unique quotes have been generated,
+    // release least recent quote back into generation pool 
+    if (recentQuotes.length > uniqueQuotes) {
+        recentQuotes.shift();
+    }
+}
+
 function updateQuote(): void {
     // Check quoteData is not null
     if (quoteData === null || quoteData === undefined) {
@@ -60,8 +88,8 @@ function updateQuote(): void {
     // Get a new random index
     do {
         index = getRandomInt(0, quoteData.length);
-    } while (index === prevQuoteIndex);
-    prevQuoteIndex = index;
+    } while (quoteRecentlyUsed(index));
+    logRecentQuote(index);
         
     // Get quote from quoteData
     if (quoteData[index].hasOwnProperty('content') &&

@@ -1,5 +1,5 @@
 # freeCodeCamp Random Quote Generator Project
-Live example on [codepen](http://codepen.io/ZenMerlin11/pen/xREbpp)
+Live examples on [github](https://zenmerlin11.github.io/fcc-rand-quote/) and [codepen](http://codepen.io/ZenMerlin11/pen/xREbpp)
 
 ## Getting Started ##
 

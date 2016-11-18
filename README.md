@@ -15,3 +15,7 @@ web server by running:
     npm run dev
 
 and go to <http://localhost:8080>
+
+## References ##
+
+Quote Data provided by [Quotes On Design](http://quotesondesign.com)

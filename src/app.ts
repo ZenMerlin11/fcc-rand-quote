@@ -11,6 +11,7 @@ const uniqueQuotes = 30;
 let recentQuotes: Array<number> = [];
 let quoteData: Array<IQuoteData>; 
 
+// Preload quote data from json file
 function getJSON(url: string): void {
     let xhr: XMLHttpRequest = new XMLHttpRequest(),
         response: any;
@@ -42,12 +43,14 @@ function handleXhrResponse(xhr: XMLHttpRequest) {
     updateQuote();
 }
 
+// Generate random index value for quoteData array
 function getRandomInt(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// Check if generated quote has been used in the past 30 runs
 function quoteRecentlyUsed(index: number) {
     if (recentQuotes === undefined) {
         return false;
@@ -62,8 +65,8 @@ function quoteRecentlyUsed(index: number) {
     return false;
 }
 
+// Log the current index to recent quotes
 function logRecentQuote(index: number) {
-    // Log the current index to recent quotes
     recentQuotes.push(index);
 
     // Once the desired number of unique quotes have been generated,
@@ -73,6 +76,7 @@ function logRecentQuote(index: number) {
     }
 }
 
+// Get a random quote from the preloaded data and display it
 function updateQuote(): void {
     // Check quoteData is not null
     if (quoteData === null || quoteData === undefined) {
@@ -102,8 +106,8 @@ function updateQuote(): void {
     }
 }
 
+// Render quote data to DOM
 function renderQuoteToDOM(quote: string, author: string): void {
-    // Render quote data to DOM
     let elem: Element;
     elem = document.getElementById('quote');
     elem.innerHTML = quote;
@@ -111,8 +115,8 @@ function renderQuoteToDOM(quote: string, author: string): void {
     elem.innerHTML = '<strong><em>-'.concat(author).concat('</em></strong>');
 }
 
-function updateTweetLink(quote: string, author: string): void {
-    // Build and update Tweet link
+// Build and update Tweet link
+function updateTweetLink(quote: string, author: string): void {    
     let elem: Element;
     
     // Strip HTML from quote string

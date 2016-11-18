@@ -4,7 +4,7 @@
   "description": "FreeCodeCamp Random Quote Machine",
   "main": "./js/bundle.js",
   "scripts": {
-    "dev": "rm -r dist && webpack-dev-server --host 0.0.0.0",
+    "dev": "webpack-dev-server --host 0.0.0.0",
     "build": "/bin/bash build.sh",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
